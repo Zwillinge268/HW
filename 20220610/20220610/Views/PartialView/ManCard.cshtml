@@ -1,0 +1,19 @@
+﻿@model IEnumerable<_20220610.Models.Card>
+
+@{
+    ViewBag.Title = "ManCard";
+}
+<div class="jumbotron">
+    <h2>ManCard</h2>
+</div>
+
+<div class="row">
+    @foreach (var man in Model)
+    {
+        @Html.Partial("_CardPartial", man);
+    }
+</div>
+
+@section topCSS{
+    <link href="~/Assets/CSS/StyleSheet1.css" rel="stylesheet" />
+    }
