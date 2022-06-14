@@ -1,0 +1,25 @@
+﻿/*設定Table欄位標題顏色*/
+th {
+    color: lightblue;
+    background-color: black;
+    text-align: center;
+}
+
+td {
+    text-align: center;
+}
+
+/*設定Table資料列Hover時的光棒效果*/
+.table > tbody > tr:hover {
+    background-color: antiquewhite !important;
+}
+
+/*漲*/
+.raise {
+    background-color: red !important;
+}
+
+/*跌*/
+.fall {
+    background-color: green !important;
+}

@@ -1,0 +1,75 @@
+﻿@model IEnumerable<_2ndTest.Models.Stock>
+
+@{
+    ViewBag.Title = "自選股行情";
+}
+
+<div class="jumbotron alert-success">
+    <h2>自選股行情</h2>
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StockId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StockName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PreviousClose)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.openingPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.highestPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lowestPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.closingPrice)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockName)
+            </td>
+            @DisplayColor(item.closingPrice, item.PreviousClose, item.PreviousClose)
+            @DisplayColor(item.closingPrice, item.PreviousClose, item.openingPrice)
+            @DisplayColor(item.closingPrice, item.PreviousClose, item.highestPrice)
+            @DisplayColor(item.closingPrice, item.PreviousClose, item.lowestPrice)
+            @DisplayColor(item.closingPrice, item.PreviousClose, item.closingPrice)
+        </tr>
+    }
+
+</table>
+
+@helper DisplayColor(double C, double P, double data)
+{
+    if (C > P)
+    {
+        <td class="raise">@data</td>
+    }
+    else if (C < P)
+    {
+        <td class="fall">@data</td>
+    }
+    else
+    {
+        <td>@data</td>
+    }
+}
+
+@section topCSS
+{
+    <link href="~/Assets/css/raise.css" rel="stylesheet" />
+}

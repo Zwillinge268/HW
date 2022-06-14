@@ -1,0 +1,94 @@
+﻿@model IEnumerable<_2ndTest.Models.Stock>
+
+@{
+    ViewBag.Title = "漲跌幅";
+}
+
+<div class="jumbotron alert-success">
+    <h2>自選股行情含漲跌幅</h2>
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StockId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StockName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PreviousClose)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.openingPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.highestPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lowestPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.closingPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.change)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ROC)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.StockId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.StockName)
+    </td>
+
+    @DisplayColor(item.ROC, item.closingPrice, item.openingPrice, item.PreviousClose)
+    @DisplayColor(item.ROC, item.closingPrice, item.openingPrice, item.openingPrice)
+    @DisplayColor(item.ROC, item.closingPrice, item.openingPrice, item.highestPrice)
+    @DisplayColor(item.ROC, item.closingPrice, item.openingPrice, item.lowestPrice)
+    @DisplayColor(item.ROC, item.closingPrice, item.openingPrice, item.closingPrice)
+    @DisplayColor(item.ROC, item.closingPrice, item.openingPrice, item.change)
+    @DisplayColor(item.ROC, item.closingPrice, item.openingPrice, item.ROC)
+</tr>
+    }
+
+</table>
+
+@helper DisplayColor(double ROC, double C, double O, double data)
+{
+    if (ROC >= 10)
+    {
+        <td class="limitedUp">@data</td>
+    }
+    else if (ROC <= -10)
+    {
+        <td class="limitedDown">@data</td>
+    }
+    else
+    {
+        if (O > C)
+        {
+            <td class="OHCL">@data</td>
+        }
+        else if (O < C)
+        {
+            <td class="OLCH">@data</td>
+        }
+        else
+        {
+            <td>@data</td>
+        }
+    }
+}
+
+@section topCSS{
+    <link href="~/Assets/css/updown.css"  rel="stylesheet"/>
+}

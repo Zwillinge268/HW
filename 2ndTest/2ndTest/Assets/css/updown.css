@@ -1,0 +1,46 @@
+﻿th {
+    color: lightblue;
+    background-color: black;
+    text-align: center;
+}
+
+td {
+    text-align: center;
+}
+
+/*設定Table資料列Hover時的光棒效果*/
+.table > tbody > tr:hover {
+    background-color: antiquewhite !important;
+}
+
+
+/*開高收低*/
+.OHCL {
+    background-color: lawngreen !important;
+}
+
+/*開低收高*/
+.OLCH {
+    background-color: mediumpurple !important;
+}
+
+/*漲停*/
+.limitedUp {
+    background-color: purple !important;
+    font-weight: 900;
+    font-size: 1.2em;
+}
+
+    .limitedUp::after {
+        content: ' (漲停)';
+    }
+/*跌停*/
+.limitedDown {
+    background-color: darkgreen !important;
+    font-weight: 900;
+    font-size: 1.2em;
+}
+
+    .limitedDown::after {
+        content: ' (跌停)';
+    }
